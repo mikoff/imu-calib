@@ -5,6 +5,8 @@ proposed one **does not require a rotating table or other special equipment**. T
 a series of sequential rotations of inertial measurement unit
 (IMU) separated by standstill periods.
 
+This is the supplementary code and the implementation of the ideas, presented in [IEEE paper](#Citation).
+
 ## Overview
 The proposed approach allows to perform full IMU calibration: scale factors, non-orthogonalities and biases of accelerometer and gyroscope triads and misalignment between them.
 
@@ -59,9 +61,12 @@ This is the accompanying code for "In-situ gyroscope calibration based on accele
 ### Citation
 If you use the code, the authors will be grateful for citing:
 ```
-@article{mikov2020icins,
-  author = {Aleksandr Mikov and Sergey Reginya and Alex Moschevikin},
-  title = {{In-situ gyroscope calibration based on accelerometer data}},
-  year = {2020}
+@inproceedings{mikov2020situ,
+  title={In-situ Gyroscope Calibration Based on Accelerometer Data},
+  author={Mikov, Aleksandr and Reginya, Sergey and Moschevikin, Alex},
+  booktitle={2020 27th Saint Petersburg International Conference on Integrated Navigation Systems (ICINS)},
+  pages={1--5},
+  year={2020},
+  organization={IEEE}
 }
 ```

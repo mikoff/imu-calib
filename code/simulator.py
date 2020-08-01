@@ -3,6 +3,9 @@ import numpy as np
 from code.quaternion import *
 from code.imu_model import sensor_error_model, misalignment
 
+from helpers import gravity_ned
+from CONFIG import *
+
 def slerp(q_from, q_to, fraction):
     theta = q_from.q.T @ q_to.q
     q = np.sin((1.0 - fraction) * theta) * q_from.q / np.sin(theta) \
@@ -24,7 +27,7 @@ def generate_imu_measurements_from_orientation_sequence(orientations, dt = 0.01)
         angular_velocities.append(
             generate_angular_velocity_between_two_orientations(o_prev, o, dt))
         accelerations.append(
-            o.Rm().T @ np.array([[0.0], [0.0], [9.81]]).flatten())
+            o.Rm().T @ np.array([[0.0], [0.0], [np.linalg.norm(gravity_ned(LATITUDE_RAD, HEIGHT_METERS))]]).flatten())
         o_prev = o
 
     return np.array(angular_velocities), np.array(accelerations)

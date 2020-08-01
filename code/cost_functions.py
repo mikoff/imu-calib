@@ -3,6 +3,9 @@ import numpy as np
 from code.imu_model import sensor_error_model, misalignment
 from code.quaternion import Quaternion
 
+from helpers import gravity_ned
+from CONFIG import *
+
 def residual_acc(theta, accs, idxs, least_squares = True):
     '''
     Accelerometer cost function according to equation (10) in the paper
@@ -20,7 +23,7 @@ def residual_acc(theta, accs, idxs, least_squares = True):
             pitch = np.arctan2(-acc[0], np.sqrt(acc[2]**2 + acc[1]**2))
 
             # equation (13)
-            u = 9.81 * np.array([-np.sin(pitch),
+            u = np.linalg.norm(gravity_ned(LATITUDE_RAD, HEIGHT_METERS)) * np.array([-np.sin(pitch),
                                     np.cos(pitch)*np.sin(roll),
                                     np.cos(pitch)*np.cos(roll)])
             residual = u - acc

@@ -83,3 +83,18 @@ def integrate_gyroscope(roll, pitch, yaw, measurements, dt, return_as = 'array')
         else:
             orientations.append(q)
     return orientations
+
+def gravity_ned(latitude_rad, height): 
+    R_0 = 6378137         # WGS84 Equatorial radius in meters 
+    R_P = 6356752.31425   # WGS84 Polar radius in meters 
+    e = 0.0818191908425   # WGS84 eccentricity 
+    f = 1 / 298.257223563 # WGS84 flattening 
+    mu = 3.986004418E14   # WGS84 Earth gravitational constant (m^3 s^-2) 
+     
+    sinsqL = np.sin(latitude_rad) ** 2 
+    g_0 = 9.7803253359 * (1 + 0.001931853 * sinsqL) / np.sqrt(1 - e**2 * sinsqL) 
+     
+     
+    return np.array([-8.08E-9 * height * np.sin(2 * latitude_rad), 
+        0.0, 
+        g_0 * (1 - (2 / R_0) * (1 + f * (1 - 2 * sinsqL) + (omega_ie**2 * R_0**2 * R_P / mu)) * height + (3 * height**2 / R_0**2))])

@@ -25,9 +25,9 @@ def residual_acc(theta, accs, idxs, least_squares = True):
                                     np.cos(pitch)*np.cos(roll)])
             residual = u - acc
 
-            z[2*standstill_counter]     = residual[0]
-            z[2*standstill_counter + 1] = residual[1]
-            z[2*standstill_counter + 2] = residual[2]
+            z[3*standstill_counter]     = residual[0]
+            z[3*standstill_counter + 1] = residual[1]
+            z[3*standstill_counter + 2] = residual[2]
             standstill_counter += 1
            
     if least_squares:

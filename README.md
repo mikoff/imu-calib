@@ -5,7 +5,7 @@ proposed one **does not require a rotating table or other special equipment**. T
 a series of sequential rotations of inertial measurement unit
 (IMU) separated by standstill periods.
 
-This is the supplementary code and the implementation of the ideas, presented in [IEEE paper](#Citation)[link](https://ieeexplore.ieee.org/document/9133804).
+This is the supplementary code and the implementation of the ideas, presented in [IEEE paper](#Citation) [[IEEE link]](https://ieeexplore.ieee.org/document/9133804).
 
 ## Overview
 The proposed approach allows to perform full IMU calibration: scale factors, non-orthogonalities and biases of accelerometer and gyroscope triads and misalignment between them.
